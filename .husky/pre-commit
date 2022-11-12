@@ -4,3 +4,4 @@
 yarn format:staged
 yarn test
 yarn lint
+yarn build
