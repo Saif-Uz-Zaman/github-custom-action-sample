@@ -9519,16 +9519,17 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __importDefault(__nccwpck_require__(2186));
 const github_1 = __importDefault(__nccwpck_require__(5438));
 try {
-    const nameToGreet = core_1.default.getInput('who-to-greet');
+    const nameToGreet = core_1.default.getInput("who-to-greet");
     console.log(`Hello ${nameToGreet}`);
-    const time = (new Date()).toTimeString();
+    const time = new Date().toTimeString();
     core_1.default.setOutput("time", time);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github_1.default.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
 }
 catch (error) {
-    core_1.default.setFailed(error.message);
+    if (error instanceof Error)
+        core_1.default.setFailed(error.message);
 }
 
 
